@@ -1,0 +1,32 @@
+type Unit {
+	id: ID!
+	name: String
+	abbreviation: String
+
+	parentUnit: Unit
+	members: [Person]
+	director: Person
+}
+
+type Person {
+	id: ID!
+	name: String
+	initials: String
+	role: String
+
+	supervisor: Person
+	belongsTo: Unit
+}
+
+type Query {
+	findAllUnits: [Unit]
+	findUnit(id: ID!): Unit
+	
+	findAllPersons: [Person]
+	findPerson(id: ID!): Person
+}
+
+type Mutation {
+	createPerson: Person
+	changePersonName(id: ID!, name: String!): Person
+}
