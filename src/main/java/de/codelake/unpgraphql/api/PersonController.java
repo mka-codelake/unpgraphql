@@ -42,4 +42,10 @@ public class PersonController {
 		repo.save(person);
 		return person;
 	}
+
+	@MutationMapping
+	public Boolean deletePerson(@Argument final Long id) {
+		repo.deleteById(id);
+		return Boolean.TRUE;
+	}
 }
